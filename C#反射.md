@@ -142,16 +142,16 @@
 
 
 
-            //获得无参构造函数
+            //获得无参构造函数,参数为形参类型没有则填new Type[0]，不能填null
             ConstructorInfo ctorinfo1 = classType.GetConstructor(new Type[0]);
             //执行构造函数
-            Object obj1 = ctorinfo1.Invoke(new object[0]);//参数为实参，没有填null
+            Object obj1 = ctorinfo1.Invoke(new object[0]);//参数为实参，没有填null或new object[0]
             //或直接执行并赋值
             obj1 = Activator.CreateInstance(classType);
 
 
 
-            //获得有参构造函数
+            //获得有参构造函数,参数为形参类型
             ConstructorInfo ctorinfo2 = classType.GetConstructor(new Type[] { typeof(int), typeof(string) });
             //执行构造函数
             Object obj2 = ctorinfo2.Invoke(new object[] { 55, "关东关" });
@@ -179,7 +179,7 @@
             //参数2：为形参类型
             MethodInfo methodInfo = classType.GetMethod("Method", new Type[0]);
             //执行方法
-            //参数1：为执行该方法的对象，如果是静态方法则填null
+            //参数1：为执行该方法的对象，如果是静态方法则填null或new object[0]
             //参数2：为实参，没有则填null
             //相当于obj2.Method();
             methodInfo.Invoke(obj2, null);
