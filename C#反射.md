@@ -31,7 +31,7 @@
         //通过传入类型的名字,注意需要将命名空间一并传入
         Type type3 = Type.GetType("System.Int32");
     ```
-    通过反射获取的类型（公共类型）：
+    通过反射获取的类型（公有类型）：
     \ |类型|获得方法|获得数组方法
     -----|-----|-----|-----
     所有公共成员|MemberInfo|Type.GetMember(Type type)|Type.GetMembers(Type type)
